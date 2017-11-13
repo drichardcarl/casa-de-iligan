@@ -7,8 +7,9 @@
 
         <!-- Referencing Bootstrap CSS that is hosted locally -->
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
         @yield('addons')
-        <title>{{config('app.name', 'ProjectCasa')}}</title>
+        <title>Casa de Iligan - Where you can find your Home</title>
     </head>
     <body>
         @include('includes.navbar')
