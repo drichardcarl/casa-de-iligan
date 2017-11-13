@@ -18,8 +18,14 @@ Route::get('/', function () {
 });
 */
 
-Route::get('/', 'PagesController@index');
 Route::get('/about-us', 'PagesController@about');
-Route::get('/register', 'PagesController@register');
 Route::get('/owner', 'PagesController@owner');
 Route::get('/customer', 'PagesController@customer');
+
+
+Route::get('/register', 'CustomAuthController@showRegForm')->name('custom-auth.register');
+Route::post('/register', 'CustomAuthController@register');
+
+Route::get('/', 'PagesController@index')->name('pages.index');
+Route::post('/', 'CDILoginController@login');
+
