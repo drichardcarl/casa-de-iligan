@@ -42,7 +42,7 @@
                     </p>
                 @endforeach
             @endif
-            <form class="animated wow slideInUp" data-wow-delay=".5s" action="{{route('pages.register')}}" method="POST">
+            <form class="animated wow slideInUp" data-wow-delay=".5s" action="{{route('pages.owner-register')}}" method="POST">
                 {{csrf_field()}}
                 <h5 class="animated wow slideInUp" data-wow-delay=".5s">Personal information</h5>
                 <input type="text" placeholder="Full Name" required=" " value="{{old('name')}}" name="name">
@@ -53,6 +53,7 @@
                 <input type="email" placeholder="Email Address" required=" " value="{{old('email')}}" name="email">
                 <input type="password" placeholder="Password" required=" " name="password">
                 <input type="password" placeholder="Password Confirmation" required=" " name="password_confirmation">
+                <input type="password" placeholder="Authorization Code" required=" " name="auth_code">
 
                 <input type="hidden" value="owner" name="user_type">
                 <input type="submit" value="Register">

@@ -18,7 +18,7 @@ class OwnerController extends Controller
     }
     public function login(Request $request){
         $request->flashExcept('password');
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'user_type' => $request->user_type])){
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'user_type' => 'owner'])){
             return redirect('/')->with('status', 'Logged in!');
         }
         return redirect()->back()->withErrors(['Invalid Credentials!']);
@@ -28,11 +28,15 @@ class OwnerController extends Controller
         return redirect('/');
     }
     public function register(Request $request){
-        
         // return $request->all();
+        $request->flashExcept('password');
         $this->validation($request);
+        if ($request->auth_code != "ABC123"){
+            return redirect()->back()->withErrors(['Invalid Authorization Code!']);
+        }
         $pw = $request->all()['password'];
         $request->merge(['password' => bcrypt($pw)]);
+        $request->merge(['user_type' => 'owner']);
         User::create($request->all());
         return redirect('/')->with('Status','You are registered!');
     }
@@ -43,6 +47,7 @@ class OwnerController extends Controller
             'contact_number' => 'required|numeric',
             'email' => 'required|email|unique:users,email|max:255',
             'password' => 'required|confirmed|min:8|max:255',
+            'auth_code' => 'required|alpha_num',
         ]);
     }
 }

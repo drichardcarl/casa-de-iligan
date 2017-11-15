@@ -18,7 +18,7 @@ class CustomerController extends Controller
     }
     public function login(Request $request){
         $request->flashExcept('password');
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'user_type' => $request->user_type])){
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'user_type' => 'customer'])){
             return redirect('/')->with('status', 'Logged in!');
         }
         return redirect()->back()->withErrors(['Invalid Credentials!']);
@@ -33,6 +33,7 @@ class CustomerController extends Controller
         $this->validation($request);
         $pw = $request->all()['password'];
         $request->merge(['password' => bcrypt($pw)]);
+        $request->merge(['user_type' => 'customer']);
         User::create($request->all());
         return redirect('/')->with('Status','You are registered!');
     }
