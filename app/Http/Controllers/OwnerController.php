@@ -8,13 +8,13 @@ use App\User;
 use Auth;
 
 
-class CustomerController extends Controller
+class OwnerController extends Controller
 {
     public function loginPage(){
-        return view('pages.login');
+        return view('pages.owner-login');
     }
     public function registerPage(){
-        return view('pages.register');
+        return view('pages.owner-register');
     }
     public function login(Request $request){
         $request->flashExcept('password');

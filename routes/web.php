@@ -36,3 +36,10 @@ Route::get('/register', 'CustomerController@registerPage')->name('pages.register
 Route::post('/register', 'CustomerController@register');
 
 Route::get('/info', 'PagesController@info');
+Route::get('/logout-customer', 'CustomerController@logout');
+
+Route::get('/owner-login', 'OwnerController@loginPage')->name('pages.owner-login');
+Route::post('/owner-login', 'OwnerController@login');
+
+Route::get('/owner-register', 'OwnerController@registerPage')->name('pages.owner-register');
+Route::post('/owner-register', 'OwnerController@register');

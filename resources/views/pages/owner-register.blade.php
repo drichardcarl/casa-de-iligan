@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-	<title>Casa de Iligan - We find Homes | Customer Registration</title>
+	<title>Casa de Iligan - We find Homes | Owner Registration</title>
     <script>
         $(document).ready(function () {
             // Handler for .ready() called.
@@ -21,7 +21,7 @@
                 <a href="index.html">
                     <span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
             </li>
-            <li class="active">Register</li>
+            <li class="active">Register Owner</li>
         </ol>
     </div>
 </div>
@@ -31,7 +31,7 @@
     <div class="container" id="what">
         <h3 class="animated wow zoomIn" data-wow-delay=".5s">Registration</h3>
         <p class="est animated wow zoomIn" data-wow-delay=".5s">
-            Please register as one of our customers to enjoy the previleges of a customer!
+            Please register as one of our owners to enjoy the previleges of an owner!
         </p>
         <div class="login-form-grids">
             @if (count($errors) > 0)
@@ -54,7 +54,7 @@
                 <input type="password" placeholder="Password" required=" " name="password">
                 <input type="password" placeholder="Password Confirmation" required=" " name="password_confirmation">
 
-                <input type="hidden" value="customer" name="user_type">
+                <input type="hidden" value="owner" name="user_type">
                 <input type="submit" value="Register">
             </form>
         </div>
